@@ -25,5 +25,28 @@ public class Main {
             }
             System.out.println();
         }
+        System.out.println("\n");
+
+        // Verifica os números
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (matriz[i][j] == 1) {
+                    matriz [i][j] = 2;
+                } else if (matriz[i][j] == 0 ) {
+                    break;
+                }
+
+            }
+
+            // Imprime a matriz
+            for (int a = 0; a < 10; a++) {
+                for (int b = 0; b < 10; b++) {
+                    System.out.print(matriz[a][b] + " ");
+                }
+                System.out.println();
+            }
+            System.out.println("\n");
+
+        }
     }
 }
