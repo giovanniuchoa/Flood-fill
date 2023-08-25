@@ -1,6 +1,9 @@
-// Matriz.java
+import java.util.Stack;
+
 public class Matriz {
     private int[][] matriz;
+
+    Stack<String> pilha = new Stack<>();
 
     public Matriz(int linhas, int colunas) {
         matriz = new int[linhas][colunas];
@@ -37,10 +40,12 @@ public class Matriz {
             for (int j = 0; j < matriz[0].length; j++) {
                 if (matriz[i][j] == 1) {
                     matriz[i][j] = 2;
+                    pilha.push(i + "," + j);
                 } else if (matriz[i][j] == 0) {
                     break;
                 }
             }
+            System.out.println(pilha);
             imprimirMatriz();
         }
     }
