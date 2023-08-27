@@ -3,9 +3,9 @@ public class Pilha <T> {
     private T[] valores;
     private int topo;
 
-    public Pilha(int tamanho) {
+    public Pilha(T[] f, tamanho) {
         topo = -1;
-        valores = new T[tamanho];
+        this.valores = f;
 
     }
     public void mostrar(){
@@ -19,7 +19,6 @@ public class Pilha <T> {
         }
         topo = topo + 1;
         valores[topo] = entrada;
-
     }
 
     public T remove(){
@@ -49,7 +48,6 @@ public class Pilha <T> {
             return false;
         }
     }
-
     public void clear() {
         for (int i = 0; i < valores.length; i++){
             valores[i] = null;
