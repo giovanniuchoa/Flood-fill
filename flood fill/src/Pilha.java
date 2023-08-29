@@ -31,6 +31,10 @@ public class Pilha <T> {
         this.data[topo] = data;
     }
     public T remove(){
+        if (isEmpty()){
+            System.out.println("Pilha vazia");
+            return null;
+        }
         T retorno = this.data[topo] ;
         this.data[topo] = null;
         topo -= 1;
@@ -42,6 +46,7 @@ public class Pilha <T> {
         for (int i = 0; i<data.length;i++){
             this.data[i] = null;
         }
+        topo = -1;
     }
     public void showPilha(){
         for (int i = 0; i<topo+1;i++){
