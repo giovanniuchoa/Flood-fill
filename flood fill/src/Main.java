@@ -12,12 +12,6 @@ public class Main {
 //
 //        matriz.verificarEAtualizarNumeros();
 
-        Pilha p = new Pilha<>(5);
-
-        p.add("Ola Mundo");
-        p.add(15);
-        p.showPilha();
-
 //
 //        p.add(25);
 //        p.add("lili");
