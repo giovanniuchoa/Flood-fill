@@ -1,56 +1,75 @@
 public class Pilha <T> {
-
-    private T[] valores;
+    private T[] data;
     private int topo;
-
-    public Pilha(T[] f, tamanho) {
+    private int tamanho;
+    public Pilha(int tamanho){
         topo = -1;
-        this.valores = f;
+        this.tamanho = tamanho;
+        this.data = (T[]) new Object[tamanho];
+    }
 
-    }
-    public void mostrar(){
-        for (int i = 0; i < valores.length; i++){
-            System.out.println(valores[i]);
+    public boolean isEmpty() {
+        if(getTamanho() == -1){
+            return true;
         }
+        return false;
     }
-    public void add (T entrada){
+
+    public boolean isFull() {
+        if (getTamanho()==topo+1){
+            return true;
+        }
+        return false;
+    }
+
+    public void add(T data) {
         if (isFull()){
-            return ;
+            System.out.print("A pilha está cheia");
+            return;
         }
-        topo = topo + 1;
-        valores[topo] = entrada;
+        topo += 1;
+        this.data[topo] = data;
     }
-
     public T remove(){
-        if (isEmpty()){
-            return null;
-        }
-        T retorno = valores[topo];
-        valores[topo] = null;
-        topo = topo -1;
+        T retorno = this.data[topo] ;
+        this.data[topo] = null;
+        topo -= 1;
+
         return retorno;
     }
 
-    public boolean isFull(){
-        if(topo + 1 == valores.length){
-            return true;
+    public void clear(){
+        for (int i = 0; i<data.length;i++){
+            this.data[i] = null;
         }
-        else{
-            return false;
+    }
+    public void showPilha(){
+        for (int i = 0; i<topo+1;i++){
+            System.out.println(i+ " - "+ data[i].toString());
         }
     }
 
-    public boolean isEmpty(){
-        if(topo == -1){
-            return true;
-        }
-        else{
-            return false;
-        }
+    public int getTamanho() {
+        return tamanho;
     }
-    public void clear() {
-        for (int i = 0; i < valores.length; i++){
-            valores[i] = null;
-        }
+
+    public int getTopo() {
+        return topo;
+    }
+
+    public T[] getData() {
+        return data;
+    }
+
+    public void setData(T[] data) {
+        this.data = data;
+    }
+
+    public void setTamanho(int tamanho) {
+        this.tamanho = tamanho;
+    }
+
+    public void setTopo(int topo) {
+        this.topo = topo;
     }
 }

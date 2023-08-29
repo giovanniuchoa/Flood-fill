@@ -3,7 +3,7 @@ import java.util.Queue;
 import java.util.LinkedList;
 public class Main {
     public static void main(String[] args) {
-//        Matriz matriz = new Matriz(10, 10);
+//        Matriz matriz = new Matriz(5, 5);
 //
 //        matriz.preencherZerosNaDiagonal();
 //        matriz.preencherUnsNoRestante();
@@ -11,9 +11,15 @@ public class Main {
 //        matriz.imprimirMatriz();
 //
 //        matriz.verificarEAtualizarNumeros();
-        Pilha p = new Pilha<>([],10);
 
-        p.add(25);
-        p.add("lili");
+        Pilha p = new Pilha<>(5);
+
+        p.add("Ola Mundo");
+        p.add(15);
+        p.showPilha();
+
+//
+//        p.add(25);
+//        p.add("lili");
     }
 }
