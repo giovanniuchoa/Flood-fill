@@ -1,61 +1,56 @@
-public class Pilha <T> {
+public  class Pilha <T> {
     private T[] data;
     private int topo;
-    private int tamanho;
-    public Pilha(int tamanho){
+
+    public Pilha(int capacidadeTotal){
         topo = -1;
-        this.tamanho = tamanho;
-        this.data = (T[]) new Object[tamanho];
+        this.data = (T[]) new Object[capacidadeTotal];
     }
 
-    public boolean isEmpty() {
-        if(getTamanho() == -1){
+    public boolean isEmpty() { //VERIFICA SE A PILHA ESTÁ VAZIA
+        if(getTopo() == -1){
             return true;
         }
         return false;
     }
 
-    public boolean isFull() {
-        if (getTamanho()==topo+1){
+    public boolean isFull() { //VERIFICA SE A PILHA ESTÁ CHEIA
+
+        if (getTopo()+1 == getData().length){
             return true;
         }
         return false;
     }
 
-    public void add(T data) {
+    public void add(T data) { //ADICIONA UM ELEMENTO A PILHA
         if (isFull()){
-            System.out.print("A pilha está cheia");
-            return;
+            throw new IllegalStateException("A Pilha está cheia.");
         }
-        topo += 1;
-        this.data[topo] = data;
-    }
-    public T remove(){
-        if (isEmpty()){
-            System.out.println("Pilha vazia");
-            return null;
-        }
-        T retorno = this.data[topo] ;
-        this.data[topo] = null;
-        topo -= 1;
+        this.data[getTopo()+1] = data;
+        setTopo(getTopo() + 1);
 
+    }
+    public T remove(){ //REMOVE UM ELEMENTO A PILHA
+        if (isEmpty()){
+            throw new IllegalStateException("A Pilha está vazia.");
+        }
+        T retorno = this.data[getTopo()];
+        this.data[getTopo()] = null;
+        setTopo(getTopo() - 1);
         return retorno;
     }
 
-    public void clear(){
+    public void clear(){ // LIMPA TODAS AS POSIÇÕES DA PILHA
         for (int i = 0; i<data.length;i++){
             this.data[i] = null;
         }
-        topo = -1;
+        setTopo(-1);
     }
-    public void showPilha(){
-        for (int i = 0; i<topo+1;i++){
+    public void showPilha(){ //IMPRIME A PILHA
+        System.out.println("Topo: "+getTopo());
+        for (int i = 0; i<getTopo()+1;i++){
             System.out.println(i+ " - "+ data[i].toString());
         }
-    }
-
-    public int getTamanho() {
-        return tamanho;
     }
 
     public int getTopo() {
@@ -68,10 +63,6 @@ public class Pilha <T> {
 
     public void setData(T[] data) {
         this.data = data;
-    }
-
-    public void setTamanho(int tamanho) {
-        this.tamanho = tamanho;
     }
 
     public void setTopo(int topo) {
