@@ -9,9 +9,9 @@ public class Main {
         matriz.preencherUnsNoRestante();
 
 //        matriz.imprimirMatriz();
-        matriz.FloodFillFunctionPilha(0,0);
+//        matriz.FloodFillFunctionPilha(0,0);
 
-//        matriz.FloodFillFunctionFila(0,0);
+        matriz.FloodFillFunctionFila(0,0);
 
 
     }

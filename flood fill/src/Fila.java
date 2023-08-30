@@ -17,7 +17,6 @@ public class Fila <T>{
         }
 
         setTopo((getTopo()+1)% getData().length);
-
         this.data[getTopo()] = data;
         setTamanhoAtual(tamanhoAtual + 1);
     }

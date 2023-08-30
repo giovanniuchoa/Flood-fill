@@ -11,7 +11,7 @@ public class Matriz <T> {
     public Matriz(int linhas, int colunas) {
         matriz = new int[linhas][colunas];
         pilha = new Pilha<>(linhas*colunas+10);
-        fila = new Fila<>(linhas*colunas+10);
+        fila = new Fila<>(linhas*colunas+1000);
         this.colunas = colunas;
         this.linhas = linhas;
     }
@@ -52,7 +52,8 @@ public class Matriz <T> {
     }
 
     public void FloodFillFunctionPilha(int x, int y){
-
+        int safeX = 0;
+        int safeY = 0;
         Coordenadas xy = new Coordenadas(x,y);
 
         //VERIFICA SE A ENTRADA NÃO ESTÁ FORA DA MATRIZ EX: MATRIZ[-1][0]
@@ -64,11 +65,12 @@ public class Matriz <T> {
 
         while (!this.pilha.isEmpty()){ //ENQUANTO TIVER ELEMENTOS
             xy.setXY ((int[]) this.pilha.remove());
+
             if (matriz[xy.getX()][xy.getY()] == 1){
                 matriz[xy.getX()][xy.getY()] = 2;
-            }else {
-                break;
             }
+//            if (matriz[xy.getX()][xy.getY()] != 2){
+
             for (int ii = 0;ii < 4;ii++ ){
 //
                 switch (ii){
@@ -114,8 +116,6 @@ public class Matriz <T> {
             xy.setXY ((int[]) this.fila.remove());
             if (matriz[xy.getX()][xy.getY()] == 1){
                 matriz[xy.getX()][xy.getY()] = 2;
-            }else if(matriz[xy.getX()][xy.getY()] == 2){
-                break;
             }
 //
             for (int ii = 0;ii < 4;ii++ ){
@@ -123,8 +123,6 @@ public class Matriz <T> {
                 switch (ii){
                     case 0:
                         xy.setX(xy.getX()+1);
-//                        System.out.println(xy.getX()+" "+xy.getY());
-
                         break;
                     case 1:
                         xy.setX(xy.getX()-2);
@@ -136,9 +134,7 @@ public class Matriz <T> {
                     case 3:
                         xy.setY(xy.getY()-2);
                 }
-
                 if (xy.isValid(this.linhas,this.colunas) &&  matriz[xy.getX()][xy.getY()] == 1){
-
                     this.fila.add(xy.returnCoordenadas());
                 }
 //                this.fila.showFila();
