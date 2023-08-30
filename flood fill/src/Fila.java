@@ -16,7 +16,7 @@ public class Fila <T>{
             throw new IllegalStateException("A fila está cheia.");
         }
 
-        setTopo((getTopo()+1)% getData().length);
+        setTopo((getTopo()+1)% getData().length); //
         this.data[getTopo()] = data;
         setTamanhoAtual(tamanhoAtual + 1);
     }
@@ -27,7 +27,13 @@ public class Fila <T>{
         T retorno = this.data[getBase()];
         this.data[getBase()] = null;
 
-        setBase(base + 1);
+        if (base+1 == getData().length){
+            setBase(0);
+        }else {
+            setBase(base + 1);
+
+        }
+
         setTamanhoAtual(tamanhoAtual - 1);
         return retorno;
     }

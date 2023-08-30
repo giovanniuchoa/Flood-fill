@@ -52,8 +52,6 @@ public class Matriz <T> {
     }
 
     public void FloodFillFunctionPilha(int x, int y){
-        int safeX = 0;
-        int safeY = 0;
         Coordenadas xy = new Coordenadas(x,y);
 
         //VERIFICA SE A ENTRADA NÃO ESTÁ FORA DA MATRIZ EX: MATRIZ[-1][0]
@@ -96,8 +94,9 @@ public class Matriz <T> {
                 }
 //                this.pilha.showPilha();
             }
-            xy.setY(xy.getY()-1);
+            xy.setY(xy.getY()+1);
             imprimirMatriz();
+
         }
     }
 
@@ -110,7 +109,7 @@ public class Matriz <T> {
             throw new IllegalStateException("Coordenadas iniciais inválidas");
         }
 
-        this.fila.add( xy.returnCoordenadas());
+        this.fila.add(xy.returnCoordenadas());
 
         while (!this.fila.isEmpty()){ //ENQUANTO TIVER ELEMENTOS
             xy.setXY ((int[]) this.fila.remove());
@@ -118,7 +117,7 @@ public class Matriz <T> {
                 matriz[xy.getX()][xy.getY()] = 2;
             }
 //
-            for (int ii = 0;ii < 4;ii++ ){
+            for (int ii = 0;ii < 4;ii++){
 //
                 switch (ii){
                     case 0:
@@ -139,8 +138,9 @@ public class Matriz <T> {
                 }
 //                this.fila.showFila();
             }
-            xy.setY(xy.getY()-1);
+            xy.setY(xy.getY()+1);
             imprimirMatriz();
+
 //            fila.showFila();
 
         }
